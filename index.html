@@ -69,13 +69,12 @@
 
         /* HERO */
         #hero {
-            min-height: 82vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 2rem 3rem;
+            padding: 6rem 2rem 3.5rem;
             position: relative;
             background: radial-gradient(ellipse at center top, #1c1710 0%, #0d0d0d 65%);
         }
@@ -102,10 +101,9 @@
             font-size: clamp(2.8rem, 7vw, 4.5rem);
             font-weight: 700;
             letter-spacing: 0.03em;
-            margin-bottom: 2.5rem;
+            margin-bottom: 0;
             line-height: 1.1;
         }
-        .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
         .scroll-hint {
             position: absolute;
             bottom: 1.5rem;
@@ -166,7 +164,7 @@
         .divider { width: 50px; height: 2px; background: #c9a84c; margin-bottom: 2.5rem; }
 
         /* ABOUT */
-        #about { background: #111; }
+        #about { background: #111; padding-top: 3rem; }
         .about-content { max-width: 740px; }
         .about-content p { color: #bbb; margin-bottom: 1.5rem; font-size: 1.05rem; }
         .about-content .btn { margin-top: 0.5rem; }
@@ -366,17 +364,32 @@
         @media print {
             body { background: #fff; color: #000; font-size: 11pt; line-height: 1.4; }
             nav, #hero, #about, #portfolio, #contact, footer,
-            .print-btn, .aftercare-tabs { display: none !important; }
+            .print-btn, .aftercare-tabs, .section-label, .section-title, .divider { display: none !important; }
             #aftercare { background: #fff; padding: 0.75rem 1rem; }
             .container { max-width: 100%; }
-            .tab-content { display: block !important; page-break-after: always; }
-            .tab-content:last-child { page-break-after: auto; }
+            .tab-content { display: none !important; }
+            .tab-content.active { display: block !important; }
+            #tab-traditional.active::before {
+                content: "Traditional Tattoo Aftercare";
+                display: block;
+                font-size: 16pt;
+                font-weight: bold;
+                font-family: Georgia, serif;
+                margin-bottom: 1rem;
+                color: #000;
+            }
+            #tab-wetheal.active::before {
+                content: "Wet Heal Tattoo Aftercare";
+                display: block;
+                font-size: 16pt;
+                font-weight: bold;
+                font-family: Georgia, serif;
+                margin-bottom: 1rem;
+                color: #000;
+            }
             .aftercare-step { margin-bottom: 0.55rem; gap: 0.75rem; }
             .aftercare-step p, .aftercare-step strong { color: #000; font-size: 10.5pt; }
-            .step-num { background: #000; color: #fff; print-color-adjust: exact; min-width: 22px; height: 22px; font-size: 0.7rem; }
-            .section-label { color: #555; font-size: 8pt; }
-            .section-title { color: #000; font-size: 16pt; margin-bottom: 0.4rem; }
-            .divider { margin-bottom: 0.75rem; }
+            .step-num { background: #000; color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; min-width: 22px; height: 22px; font-size: 0.7rem; }
             .aftercare-note { padding: 0.5rem 0.75rem; font-size: 9pt; margin-top: 0.75rem; border-left: 2px solid #000; background: none; color: #333; }
         }
 
@@ -424,13 +437,6 @@
         <img src="images/david-profile.jpg" alt="David Theeke" class="hero-photo">
         <p class="hero-subtitle">Tattoo Artist &nbsp;&bull;&nbsp; Artrageous Ink &nbsp;&bull;&nbsp; Green Bay, WI</p>
         <h1 class="hero-name">David Theeke</h1>
-        <div class="hero-cta">
-            <a href="#portfolio" class="btn btn-primary">View My Work</a>
-            <a href="https://www.schedulicity.com/scheduling/ai8fta" target="_blank" rel="noopener" class="btn btn-outline">Book a Session</a>
-        </div>
-    </div>
-    <div class="scroll-hint">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
 </section>
 
@@ -439,7 +445,6 @@
     <div class="container">
         <div class="about-content">
             <p class="section-label">About the Artist</p>
-            <h2 class="section-title">David Theeke</h2>
             <div class="divider"></div>
             <p>Since childhood I've had a fascination with tattoos. I remember being mesmerized by my Uncle's sleeves at a very early age. Growing up, I never imagined that making a living as a tattoo artist was even possible.</p>
             <p>In the late 80s I met Rob Jensen, who turned out to be one of my closest friends and mentors. It was in 1995 Rob convinced me to combine my love for art, tattoos and my business experience and we became business partners, opening Artrageous Ink in late '95. Rob apprenticed me as a tattoo artist and I taught him the business side. After a few great years, Rob moved down south and I bought out his share.</p>
