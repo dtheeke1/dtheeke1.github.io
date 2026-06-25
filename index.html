@@ -69,12 +69,13 @@
 
         /* HERO */
         #hero {
-            min-height: 100vh;
+            min-height: 82vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 2rem 4rem;
+            padding: 6rem 2rem 3rem;
             position: relative;
             background: radial-gradient(ellipse at center top, #1c1710 0%, #0d0d0d 65%);
         }
@@ -105,6 +106,26 @@
             line-height: 1.1;
         }
         .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .scroll-hint {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            color: #555;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+        .scroll-hint svg { opacity: 0.5; }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(6px); }
+        }
 
         /* BUTTONS */
         .btn {
@@ -146,21 +167,9 @@
 
         /* ABOUT */
         #about { background: #111; }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: start;
-        }
-        .about-photo {
-            width: 100%;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            object-position: top center;
-            filter: sepia(0.25) contrast(1.05);
-        }
-        .about-text p { color: #bbb; margin-bottom: 1.5rem; font-size: 1.05rem; }
-        .about-text .btn { margin-top: 0.5rem; }
+        .about-content { max-width: 740px; }
+        .about-content p { color: #bbb; margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .about-content .btn { margin-top: 0.5rem; }
 
         /* PORTFOLIO */
         #portfolio { background: #0d0d0d; }
@@ -355,17 +364,20 @@
 
         /* PRINT */
         @media print {
-            body { background: #fff; color: #000; }
+            body { background: #fff; color: #000; font-size: 11pt; line-height: 1.4; }
             nav, #hero, #about, #portfolio, #contact, footer,
             .print-btn, .aftercare-tabs { display: none !important; }
-            #aftercare { background: #fff; padding: 2rem; }
+            #aftercare { background: #fff; padding: 0.75rem 1rem; }
+            .container { max-width: 100%; }
             .tab-content { display: block !important; page-break-after: always; }
             .tab-content:last-child { page-break-after: auto; }
-            .aftercare-step p, .aftercare-step strong { color: #000; }
-            .step-num { background: #000; color: #fff; print-color-adjust: exact; }
-            .section-label { color: #555; }
-            .section-title, .divider { color: #000; }
-            .aftercare-note { display: none; }
+            .aftercare-step { margin-bottom: 0.55rem; gap: 0.75rem; }
+            .aftercare-step p, .aftercare-step strong { color: #000; font-size: 10.5pt; }
+            .step-num { background: #000; color: #fff; print-color-adjust: exact; min-width: 22px; height: 22px; font-size: 0.7rem; }
+            .section-label { color: #555; font-size: 8pt; }
+            .section-title { color: #000; font-size: 16pt; margin-bottom: 0.4rem; }
+            .divider { margin-bottom: 0.75rem; }
+            .aftercare-note { padding: 0.5rem 0.75rem; font-size: 9pt; margin-top: 0.75rem; border-left: 2px solid #000; background: none; color: #333; }
         }
 
         /* RESPONSIVE */
@@ -417,24 +429,22 @@
             <a href="https://www.schedulicity.com/scheduling/ai8fta" target="_blank" rel="noopener" class="btn btn-outline">Book a Session</a>
         </div>
     </div>
+    <div class="scroll-hint">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
     <div class="container">
-        <div class="about-grid">
-            <div>
-                <img src="images/david-profile.jpg" alt="David Theeke — Tattoo Artist" class="about-photo">
-            </div>
-            <div>
-                <p class="section-label">About the Artist</p>
-                <h2 class="section-title">David Theeke</h2>
-                <div class="divider"></div>
-                <p>Since childhood I've had a fascination with tattoos. I remember being mesmerized by my Uncle's sleeves at a very early age. Growing up, I never imagined that making a living as a tattoo artist was even possible.</p>
-                <p>In the late 80s I met Rob Jensen, who turned out to be one of my closest friends and mentors. It was in 1995 Rob convinced me to combine my love for art, tattoos and my business experience and we became business partners, opening Artrageous Ink in late '95. Rob apprenticed me as a tattoo artist and I taught him the business side. After a few great years, Rob moved down south and I bought out his share.</p>
-                <p>I spend the majority of my tattooing time doing larger scale custom work. I strive towards being a versatile artist and creating whatever my clients can conjure up in their imaginations. I do however have a great fondness and appreciation for Asian style tattoos.</p>
-                <a href="https://www.schedulicity.com/scheduling/ai8fta" target="_blank" rel="noopener" class="btn btn-primary">Book a Session</a>
-            </div>
+        <div class="about-content">
+            <p class="section-label">About the Artist</p>
+            <h2 class="section-title">David Theeke</h2>
+            <div class="divider"></div>
+            <p>Since childhood I've had a fascination with tattoos. I remember being mesmerized by my Uncle's sleeves at a very early age. Growing up, I never imagined that making a living as a tattoo artist was even possible.</p>
+            <p>In the late 80s I met Rob Jensen, who turned out to be one of my closest friends and mentors. It was in 1995 Rob convinced me to combine my love for art, tattoos and my business experience and we became business partners, opening Artrageous Ink in late '95. Rob apprenticed me as a tattoo artist and I taught him the business side. After a few great years, Rob moved down south and I bought out his share.</p>
+            <p>I spend the majority of my tattooing time doing larger scale custom work. I strive towards being a versatile artist and creating whatever my clients can conjure up in their imaginations. I do however have a great fondness and appreciation for Asian style tattoos.</p>
+            <a href="https://www.schedulicity.com/scheduling/ai8fta" target="_blank" rel="noopener" class="btn btn-primary">Book a Session</a>
         </div>
     </div>
 </section>
